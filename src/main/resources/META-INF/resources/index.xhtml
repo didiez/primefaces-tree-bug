@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Primefaces p:tree bug</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <h1>Primefaces p:tree bug</h1>
+        <p>The value expression in the <code>value</code> attribute is being called even if the component is not rendered at all</p>
+        
+        <h:form>
+            <!-- IMPORTANT to reproduce the bug... stateWriter.flushToWriter(); -->
+        </h:form>
+        
+        <p:tree value="#{documentsTreeView.root}" var="doc" rendered="false">
+            <p:treeNode>                    
+                <h:outputText value="#{doc.name}" />
+            </p:treeNode>
+        </p:tree>
+        
+    </h:body>
+</html>
